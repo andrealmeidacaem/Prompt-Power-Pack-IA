@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -127,7 +128,8 @@
     <section class="price-box" id="compra">
       <h2>Oferta especial de lançamento:</h2>
       <p><del>R$97</del> <strong>R$9,90</strong></p>
-      <p>Acesso imediato e vitalício via Hotmart</p>
+      <p><strong>Oferta válida por tempo limitado:</strong> <span id="urgencia" style="color:#00ffcc; font-weight:bold;"></span></p>
+<p>Acesso imediato e vitalício via Hotmart</p>
       <a class="cta" href="https://hotm.art/Y00cpe" target="_blank" rel="noopener">ACESSAR AGORA</a>
     </section>
 
@@ -135,5 +137,30 @@
       Garantia incondicional de 7 dias | Suporte rápido por e-mail | Produto digital via Hotmart
     </footer>
   </div>
+
+<script>
+  function atualizaContador() {
+    const fim = new Date("2025-07-17T17:28:55");
+    const agora = new Date();
+    const t = fim - agora;
+
+    const horas = Math.floor((t / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((t / 1000 / 60) % 60);
+    const segundos = Math.floor((t / 1000) % 60);
+
+    document.getElementById("urgencia").innerHTML =
+      ("0" + horas).slice(-2) + "h "
+      + ("0" + minutos).slice(-2) + "m "
+      + ("0" + segundos).slice(-2) + "s ";
+
+    if (t > 0) {
+      setTimeout(atualizaContador, 1000);
+    } else {
+      document.getElementById("urgencia").innerHTML = "Tempo encerrado";
+    }
+  }
+  document.addEventListener("DOMContentLoaded", atualizaContador);
+</script>
+
 </body>
 </html>
